@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express, { Application } from "express";
 import mongoose from "mongoose";
 import routes from "./routes";
+import errorHandler from "./middleware/errorMiddleware";
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use(express.json());
 
 // Routes
 app.use(routes);
+app.use(errorHandler);
+
 
 // Start the Server
 const PORT = process.env.PORT || 5000;
